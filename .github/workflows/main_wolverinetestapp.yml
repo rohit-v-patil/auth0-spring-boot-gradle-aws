@@ -54,4 +54,4 @@ jobs:
           app-name: 'wolverineTestApp'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A04A2CF3B7E04F02977076987340D66B }}
-          package: '*.war'
+          package: '*.jar'
