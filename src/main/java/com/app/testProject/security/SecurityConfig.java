@@ -14,6 +14,16 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+  private static final String[] AUTH_WHITELIST = {
+      "/",
+      "/authenticate",
+      "/swagger-resources/**",
+      "/swagger-ui/**",
+      "/v2/api-docs",
+      "/webjars/**"
+  };
+
   @Value("${auth0.audience}")
   private String audience;
 
@@ -23,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
+        .antMatchers(AUTH_WHITELIST).permitAll()
         .anyRequest()
         .authenticated()
         .and()
