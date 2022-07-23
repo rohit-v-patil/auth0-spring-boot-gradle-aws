@@ -11,9 +11,9 @@ spring:
       hibernate.enable_lazy_load_no_trans: true
       hibernate.jdbc.lob.non_contextual_creation: true
   datasource:
-    url: "jdbc:postgresql://localhost:5432/test_db"
-    username: local
-    password: local
+    url: "jdbc:postgresql://wolverine-test-app.postgres.database.azure.com:5432/test_db"
+    username: admin_wolverine
+    password: AbcdefgH$123
   liquibase:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.xml
