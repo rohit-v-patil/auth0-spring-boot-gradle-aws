@@ -1,0 +1,58 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+  id "com.microsoft.azure.azurewebapp" version "1.1.0"
+}
+
+group = 'com.app'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-quartz'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.liquibase:liquibase-core'
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+  implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+
+	implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+	compileOnly 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+	annotationProcessor 'org.projectlombok:lombok', 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
+  implementation 'org.springframework.security:spring-security-oauth2-resource-server'
+  implementation 'org.springframework.security:spring-security-oauth2-jose'
+}
+
+test {
+	useJUnitPlatform()
+}
+
+azurewebapp {
+  subscription = 'c20e1ba1-e82e-459d-ad66-43831adc3584'
+  resourceGroup = 'TEST-APPS'
+  appName = 'wolverineTestApp'
+  pricingTier = 'F1'
+  region = 'westus'
+  runtime {
+    os = 'Linux'
+    webContainer = 'Tomcat 9.0'
+    javaVersion = 'Java 8'
+  }
+}
