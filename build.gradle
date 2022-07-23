@@ -43,16 +43,3 @@ dependencies {
 test {
 	useJUnitPlatform()
 }
-
-azurewebapp {
-  subscription = 'c20e1ba1-e82e-459d-ad66-43831adc3584'
-  resourceGroup = 'TEST-APPS'
-  appName = 'wolverineTestApp'
-  pricingTier = 'F1'
-  region = 'westus'
-  runtime {
-    os = 'Linux'
-    webContainer = 'Tomcat 9.0'
-    javaVersion = 'Java 8'
-  }
-}
