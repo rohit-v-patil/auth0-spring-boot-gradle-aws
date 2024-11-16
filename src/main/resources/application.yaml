@@ -29,7 +29,7 @@ spring:
         jwt:
           issuer-uri: https://${auth0.domain}/
 server:
-  port: 8090
+  port: 8080
 
 auth0:
   audience: https://menu-api.example.com
