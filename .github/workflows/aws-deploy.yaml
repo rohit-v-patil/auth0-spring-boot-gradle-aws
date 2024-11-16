@@ -11,8 +11,34 @@ env:
   AWS_REGION: us-east-1
 
 jobs:
-  
+
   build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Java version
+        uses: actions/setup-java@v1
+        with:
+          java-version: '8'
+
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: build
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v2
+        with:
+          name: auth0-test-app
+          path: '${{ github.workspace }}/build/libs/*.jar'
+
+  
+  deploy:
     
     name: Deployment
     runs-on: ubuntu-latest
