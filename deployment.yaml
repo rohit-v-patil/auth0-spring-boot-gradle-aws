@@ -1,0 +1,29 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: kubernetes-auth0-test-app
+  labels: 
+     app: auth0-test-app
+
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: auth0-test-app
+
+  template:
+    metadata:
+      labels:
+        app: auth0-test-app
+    spec:
+      containers:
+      - name: auth0-test-app
+        image: DOCKER_IMAGE
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
