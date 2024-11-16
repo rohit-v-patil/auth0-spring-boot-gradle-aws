@@ -44,7 +44,8 @@ jobs:
           path: '${{ github.workspace }}/build/libs/*.jar'
 
   deploy:
-    name: DEployment
+    name: Deployment
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
