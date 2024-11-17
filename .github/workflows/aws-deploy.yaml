@@ -1,4 +1,4 @@
-name: Deploy to ECR
+name: Build and Deploy to EKS
 
 on:
   workflow_dispatch:
