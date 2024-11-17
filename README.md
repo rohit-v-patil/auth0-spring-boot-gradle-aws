@@ -1,6 +1,6 @@
 ## Spring Boot Application EKS Deployment
 
-1. Create container registry in ECR
+1. Create container registry in ECR (Elastic Container Registry)
 
 2. Create IAM User, assign AdministratorAccess Policy and Create Access Keys for that user
 
