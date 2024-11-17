@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kubernetes-auth0-test-app
+  namespace: non-prod-1
   labels: 
      app: auth0-test-app
 
